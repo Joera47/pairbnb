@@ -48,3 +48,5 @@ end
 #Added by user
 gem 'clearance'
 gem "figaro"
+gem 'omniauth'
+gem 'omniauth-facebook'
