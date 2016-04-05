@@ -45,3 +45,6 @@ group :development do
   gem 'spring'
 end
 
+#Added by user
+gem 'clearance'
+gem "figaro"
