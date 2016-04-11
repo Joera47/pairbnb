@@ -1,0 +1,14 @@
+<h1>Listings</h1>
+
+<%= link_to 'Make New Listings', new_listing_path %><br><br>
+
+<% if @listings == [] %>
+	<p>Nothing Here!</p>
+<% else %>
+	<p>- My Listings -</p>
+	<% @listings.each do |x| %>
+		<p>Type: <%= x.home_type %> - <%= x.room_type %></p>
+		<p>Misc: <%= x.location %> - $<%= x.price %></p>
+		<%= link_to 'View', listing_path(x.id) %><br><br><br>
+	<% end %>
+<% end %>
