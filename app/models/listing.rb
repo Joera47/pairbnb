@@ -1,3 +1,5 @@
 class Listing < ActiveRecord::Base
     belongs_to :user
+    mount_uploader :image, ListingImageUploader
+    has_many :reservations
 end

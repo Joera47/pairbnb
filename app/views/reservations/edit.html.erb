@@ -1,0 +1,20 @@
+<h1>Reservations</h1>
+
+<p>Edit Reservations</p>
+
+<% @reservations.each do |x| %>
+	<% @listing = Listing.find(x.listing_id) %>
+	<%= image_tag @listing.image_url(:view).to_s %><br/>
+	Home Type: <%= @listing.home_type %><br/>
+    Room Type: <%= @listing.room_type %><br/>
+    No of Guests: <%= @listing.no_of_guest %><br/>
+    Location: <%= @listing.location %><br/>
+    Price: <%= @listing.price %><br/>
+    Address: <%= @listing.user_address %><br/>
+    No of Beds: <%= @listing.no_of_bed%><br/>
+    No of Bathrooms: <%= @listing.no_of_bathroom %><br/>
+    Description: <%= @listing.description %><br/>
+	
+	You are staying here from <%= x.check_in %> to <%= x.check_in %>
+<% end %>
+

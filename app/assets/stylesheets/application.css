@@ -18,3 +18,16 @@ body {
   min-height: 1000px;
   padding-top: 70px;
 }
+
+div.float_element {    
+    margin-left: calc(100% - 100px);
+    position: fixed;
+}
+
+.circular-image {
+  border-radius:  50%;
+}
+
+.style_image {
+  border: 1px solid white;
+}

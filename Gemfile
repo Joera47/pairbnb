@@ -51,3 +51,6 @@ gem "figaro"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'smart_listing'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'rmagick'

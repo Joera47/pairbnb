@@ -1,0 +1,18 @@
+<h1>Destinations!</h1>
+
+<% @destinations.each do |x| %>
+	<%= image_tag x.image_url(:view).to_s %><br/>
+	Home Type: <%= x.home_type %><br/>
+    Room Type: <%= x.room_type %><br/>
+    No of Guests: <%= x.no_of_guest %><br/>
+    Location: <%= x.location %><br/>
+    Price: <%= x.price %><br/>
+    Address: <%= x.user_address %><br/>
+    No of Beds: <%= x.no_of_bed%><br/>
+    No of Bathrooms: <%= x.no_of_bathroom %><br/>
+    Description: <%= x.description %><br/>
+    Availability: <%= x.availability %><br/>
+    Available Dates: <%= x.checkin %> to <%= x.checkout %><br/>
+    <%= x.id %>
+    <%= link_to 'Book Now!', new_reservation_path(:listing_id => x.id) %><br/><br/><br/>
+<% end %>

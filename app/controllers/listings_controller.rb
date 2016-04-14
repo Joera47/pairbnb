@@ -19,7 +19,7 @@ class ListingsController < ApplicationController
 	end
 
 	def edit
-		@listing = current_user.listings.find(params[:id])
+		@listing = Listing.find(params[:id])
 		@read = false
 	end
 
@@ -37,8 +37,17 @@ class ListingsController < ApplicationController
 		@read = true
 	end
 
+	def destroy
+		@listing = Listing.find(params[:id]).destroy
+		redirect_to listings_path
+	end
+
+	def destinations
+		@destinations = Listing.where.not(user_id: current_user.id)
+	end
+
 	private
 		def listing_params
-			params.require(:listing).permit(:home_type, :room_type, :no_of_guest, :location, :price, :user_address, :no_of_bed, :no_of_bathroom, :description, :availability, :checkin, :checkout)
+			params.require(:listing).permit(:home_type, :room_type, :no_of_guest, :location, :price, :user_address, :no_of_bed, :no_of_bathroom, :description, :availability, :checkin, :checkout, :image)
 		end
 end

@@ -1,1 +1,15 @@
-<%= render 'form' %>
+<h1>Edit Listing</h1>
+	
+	<% if current_user.id == @listing.user_id %>
+		<%= form_for @listing do |form| %>
+			<%= render partial: '/listings/form', object: form %>
+
+			Upload Image: <%= form.file_field :image%>
+			<class="submit-field">
+			<%= form.submit "Submit" unless @read %>
+		<% end %>
+	<% else %>
+		<p>You do not have access to this page.</p>
+	<% end %>
+
+	<%= link_to 'Return', listings_path %>

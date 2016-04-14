@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   root 'users#index'
   resources :users, only: [:show, :edit, :update, :destroy] 
   get '/auth/:provider/callback' => 'sessions#create_from_omniauth'
-  resources :listings
+  resources :listings, only: [:index, :new, :create, :edit, :update, :show]
+  delete "/listings/:id" => "listings#destroy", as: "listing_delete"
+  get "/destinations" => "listings#destinations", as: "destinations"
+  resources :reservations, only: [:index, :new, :create, :edit, :update, :show]
+  delete "/reservations/:id" => "reservations#destroy", as: "reservation_delete"
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

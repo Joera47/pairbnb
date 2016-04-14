@@ -1,0 +1,33 @@
+<h1>Reservations</h1>
+
+<p>New Reservations</p>
+
+	<%= image_tag @listing.image_url(:view).to_s %><br/>
+	Home Type: <%= @listing.home_type %><br/>
+    Room Type: <%= @listing.room_type %><br/>
+    No of Guests: <%= @listing.no_of_guest %><br/>
+    Location: <%= @listing.location %><br/>
+    Price: <%= @listing.price %><br/>
+    Address: <%= @listing.user_address %><br/>
+    No of Beds: <%= @listing.no_of_bed%><br/>
+    No of Bathrooms: <%= @listing.no_of_bathroom %><br/>
+    Description: <%= @listing.description %><br/>
+    Availability: <%= @listing.availability %><br/>
+    Available Dates: <%= @listing.checkin %> to <%= @listing.checkout %><br/>
+   
+    <%= @listing.id %>
+
+<%= form_for @reservation do |form| %>
+	<%= render partial: '/reservations/form', object: form %>
+	
+	<%= form.hidden_field :user_id, value: current_user.id %><br/>
+	<%= form.hidden_field :listing_id, value: @listing.id %><br/>
+
+    <class="input-group input-daterange">
+    	Booking Period : <%= form.date_field :check_in %>
+    <class="input-group-addon"> to
+    	<%= form.date_field :check_out %><br/>
+
+		<class="submit-field">
+		<%= form.submit "Book Now!" %>
+	<% end %>

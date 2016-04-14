@@ -1,28 +1,18 @@
-<%= form_for @listing do |f| %>
-	<%= f.hidden_field :user_id, value: current_user.id %><br/>
+	<%= form.hidden_field :user_id, value: current_user.id %><br/>
 
-    Home Type: <%= f.text_field :home_type, readonly: @read %><br/>
-    Room Type: <%= f.text_field :room_type, readonly: @read %><br/>
-    No of Guests: <%= f.number_field :no_of_guest, readonly: @read %><br/>
-    Location: <%= f.text_field :location, readonly: @read %><br/>
-    Price: <%= f.number_field :price, readonly: @read %><br/>
-    Address: <%= f.text_field :user_address, readonly: @read %><br/>
-    No of Beds: <%= f.number_field :no_of_bed, readonly: @read %><br/>
-    No of Bathrooms: <%= f.number_field :no_of_bathroom, readonly: @read %><br/>
-    Description: <%= f.text_area :description, readonly: @read %><br/>
-    Availability: <%= f.text_field :availability, readonly: @read %><br/>
+    <%= image_tag @listing.image_url(:view).to_s, :class => "style_image" %><br/>
+    Home Type: <%= form.text_field :home_type, readonly: @read %><br/>
+    Room Type: <%= form.text_field :room_type, readonly: @read %><br/>
+    No of Guests: <%= form.number_field :no_of_guest, readonly: @read %><br/>
+    Location: <%= form.text_field :location, readonly: @read %><br/>
+    Price: <%= form.number_field :price, readonly: @read %><br/>
+    Address: <%= form.text_field :user_address, readonly: @read %><br/>
+    No of Beds: <%= form.number_field :no_of_bed, readonly: @read %><br/>
+    No of Bathrooms: <%= form.number_field :no_of_bathroom, readonly: @read %><br/>
+    Description: <%= form.text_area :description, readonly: @read %><br/>
+    Availability: <%= form.text_field :availability, readonly: @read %><br/>
 
     <class="input-group input-daterange">
-    	Availability Period : <%= f.date_field :checkin, readonly: @read %>
-    	<class="input-group-addon">to
-    		<%= f.date_field :checkout, readonly: @read %><br />
-
-    <class="submit-field">
-    <%= f.submit "Submit" unless @read %>
-<% end %>
-
-<% if @read %>
-	<%= link_to 'Edit', edit_listing_path %>
-<% else %>
-	<%= link_to 'Return', listing_path(params[:id]) %>
-<% end %>
+    	Availability Period : <%= form.date_field :checkin, readonly: @read %>
+    <class="input-group-addon">to
+    	<%= form.date_field :checkout, readonly: @read %><br/>

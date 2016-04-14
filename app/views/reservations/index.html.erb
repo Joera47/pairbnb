@@ -1,0 +1,16 @@
+<h1>Reservations</h1>
+
+<p>Index Reservations</p>
+
+<% @reservations.each do |x| %>
+	<% @listing = Listing.find(x.listing_id) %>
+	<%= image_tag @listing.image_url(:view).to_s %><br/>
+	Home Type: <%= @listing.home_type %><br/>
+    Room Type: <%= @listing.room_type %><br/>
+    Location: <%= @listing.location %><br/>
+    Price: <%= @listing.price %><br/>
+	You are staying here from <%= x.check_in %> to <%= x.check_in %><br/>
+    <%= link_to 'View', reservation_path(x.id) %><br><br><br>
+
+<% end %>
+

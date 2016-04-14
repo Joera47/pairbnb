@@ -7,6 +7,7 @@
 <% else %>
 	<p>- My Listings -</p>
 	<% @listings.each do |x| %>
+	<%= image_tag x.image_url(:thumb).to_s %>
 		<p>Type: <%= x.home_type %> - <%= x.room_type %></p>
 		<p>Misc: <%= x.location %> - $<%= x.price %></p>
 		<%= link_to 'View', listing_path(x.id) %><br><br><br>

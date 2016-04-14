@@ -1,1 +1,10 @@
-<%= render 'form' %>
+<h1>Listing</h1>
+
+	<%= form_for @listing do |form| %>
+		<%= render partial: '/listings/form', object: form %>
+		
+		<% if current_user.id == @listing.user_id %>
+			<%= link_to 'Edit', edit_listing_path %>
+			<%= link_to 'Delete', listing_delete_path, method: :delete, data: {confirm: "Are you sure?"} %>
+		<% end %>	
+	<% end %>

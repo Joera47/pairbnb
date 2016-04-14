@@ -1,0 +1,17 @@
+<h2>Profile Page</h2>
+
+<% if @user[:avatar] == nil %>
+	<img src="<%= asset_path( '300.jpg' ) %>" alt="300" class="circular-image">
+<% else %>
+	<%= image_tag @user.avatar_url(:thumb).to_s %>
+<% end %>
+
+<%= form_for @user do |form| %>
+	First Name: <%= form.text_field :first_name, readonly: @read %><br/>
+	Last Name: <%= form.text_field :last_name, readonly: @read %><br/>
+	Email : <%= form.text_field :email, readonly: @read %><br/>
+<% end %>
+
+<% if current_user.id == params[:id].to_i %>
+	<%= link_to 'Edit', edit_user_path %>
+<% end %>

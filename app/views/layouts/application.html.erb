@@ -66,29 +66,44 @@
 
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Listings', listings_path %></li>
-            <% if signed_in? %>
-              <li><a href="../navbar-static-top/">Signed in as: <%= current_user.email %></a></li>
+          <li></li>
+            <li><%= link_to 'Destinations', destinations_path %></li>
+            <li><%= link_to 'My Reservations', reservations_path %></li>
+            <li><%= link_to 'My Listings', listings_path %></li>
+            <% unless current_user == nil %>
+              
+              <% @user_navbar = User.find(current_user.id) %>
+                <% if @user_navbar[:avatar] == nil %>
+                  <li><img src="<%= asset_path( '50.jpg' ) %>" alt="50" class="circular-image"></li>
+                <% else %>
+                  <li><%= image_tag @user_navbar.avatar_url(:mini).to_s, :class => "circular-image" %></li>
+                <% end %>
+
+              <% @name = current_user.email %>
+              <% @name = current_user.first_name if current_user.first_name %>
+              <li><%= link_to "Signed in as: #{@name}", user_path(current_user.id) %></li>
               <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
+  
             <% else %>
               <li><%= link_to 'Sign in', sign_in_path %></li>
             <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
-    </nav>
+    </nav> 
     
-    <div class="container">
 
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-    </div><!-- /.container -->
-  
-     
-  
 
+<!--
+<div class="float_element">
+  <span class="what">
+  <% unless current_user == nil %>
+    <% @user = User.find(current_user.id) %>
+    <%= image_tag @user.avatar_url(:mini).to_s %>
+  <% end %>
+  </span>
+</div>
+-->
 
 <div id="flash">
 <% flash.each do |key, value| %>
@@ -97,7 +112,6 @@
 </div>
 	
 <%= yield %>
-    
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

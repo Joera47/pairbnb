@@ -1,1 +1,11 @@
-<%= render 'form' %>
+<h1>New Listing</h1>
+
+	<%= form_for @listing do |form| %>
+		<%= render partial: '/listings/form', object: form %>
+
+		Upload Image: <%= form.file_field :image%>
+		<class="submit-field">
+		<%= form.submit "Submit" unless @read %>
+	<% end %>
+
+	<%= link_to 'Return', listings_path %>
